@@ -9,6 +9,7 @@
 
 /*TODO:
  * use case statement instead of if/else if
+ * cut big function into smaller functions
  * implement handling for chars
  * implement handling for strings
  * implement handling for percents | DONE
