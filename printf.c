@@ -1,6 +1,5 @@
 #include <stdarg.h>
 #include "holberton.h"
-#include <unistd.h>
 /**
  * _printf - prints passed input
  * @format: how to print passed input
@@ -136,17 +135,4 @@ while (s[i])
 _putchar(s[i]);
 i++;
 }
-}
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- * @n: count
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c, int n)
-{
-(write(1, &c, 1));
-return (n + 1);
 }
