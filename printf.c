@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include "holberton.h"
+#include <stddef.h>
 /**
  * _printf - prints passed input
  * @format: how to print passed input
@@ -24,12 +25,13 @@
  * ________mismatch between format and passed value (%c and 3 or %i and "hey")
  * ________string pointer == NULL
  * To run with testMain: gcc testMain.c printf.c -o printfTest
+ * printNumbers +1 when printing a negative int
  */
 int _printf(const char *format, ...)
 {
 int i, j, pos, printNumber = 0; /*handling string function and int function*/
-char *s; /*hadling string function*/
-va_list ap; /*enables taking input from the ...*/
+char *s; /* hadling string function */
+va_list ap; /* enables taking input from the ... */
 va_start(ap, format);
 for (pos = 0; format[pos] != '\0'; pos++) /*loop through format, print chars*/
 {
@@ -39,7 +41,7 @@ pos++;
 switch (format[pos])
 {
 	case 'c':/*checks if value after % is c (it's a char) */
-_putchar(va_arg(ap, int), printNumber);
+printNumber = _putchar(va_arg(ap, int), printNumber);
 break;
 	case 's':/*checks if value after % is s (it's a string) */
 s = va_arg(ap, char *);
@@ -47,7 +49,7 @@ printString(s);
 printNumber++;
 break;
 	case '%':/*checks if value after % is % (just print %) */
-_putchar('%', printNumber);
+printNumber = _putchar('%', printNumber);
 break;
 	case 'i':/*checks if value after % is i (int) */
 	case 'd':
@@ -61,7 +63,7 @@ break;
 }
 else/*if current char in format string is not % */
 {
-_putchar(format[pos], printNumber); /*print it like normal*/
+printNumber = _putchar(format[pos], printNumber); /*print it like normal*/
 }
 }
 va_end(ap);
@@ -102,7 +104,7 @@ int depthCopy = depth;
 
 if (localNumber < 0)
 {
-_putchar('-');
+_putchar('-', 0);
 localNumber = localNumber * -1;
 }
 
@@ -112,7 +114,7 @@ for (copy = localNumber, depthCopy = localDepth; depthCopy > 1; depthCopy--)
 {
 copy = copy / 10;
 }
-_putchar(copy % 10 + '0');
+_putchar(copy % 10 + '0', 0);
 }
 }
 
@@ -132,7 +134,7 @@ s = "(null)";
 }
 while (s[i])
 {
-_putchar(s[i]);
+_putchar(s[i], 0);
 i++;
 }
 }
