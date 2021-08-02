@@ -28,7 +28,8 @@
 int _printf(const char *format, ...)
 {
 int i; /*handling string function and int function*/
-int j;/*handling int function*/
+ int printNumber = 0;
+ int j;/*handling int function*/
 char *s; /*hadling string function*/
 int pos; /*position in format string*/
 va_list ap; /*enables taking input from the ...*/
@@ -44,6 +45,7 @@ va_start(ap, format);
 			if (format[pos] == 'c')
 			{
                         _putchar(va_arg(ap, int));
+			printNumber++;
 			}
 			/*checks if value after % is s (it's a string) */
 			else if (format[pos] == 's')
@@ -57,6 +59,7 @@ va_start(ap, format);
 			    while (s[i])
 			      {
 				_putchar(s[i]);
+				printNumber++;
 				i++;    
 			  }
                         }
@@ -64,6 +67,7 @@ va_start(ap, format);
 			else if (format[pos] == '%')
 			{
                         _putchar('%');
+			printNumber++;
 			}
 			/*checks if value after % is i (int) */
                         else if (format[pos] == 'i')
@@ -90,9 +94,11 @@ va_start(ap, format);
 		else /*if current char in format string is not % */
 		{
 		_putchar(format[pos]); /*print it like normal*/
+		printNumber++;
 		}
 	}
 va_end(ap);
+ return (printNumber);
 }
 
 int findDepth(int number)
