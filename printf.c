@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include "holberton.h"
+#include <stdio.h>
 /**
  * _printf - prints passed input
  * @format: how to print passed input
@@ -26,6 +27,8 @@
  */
 int _printf(const char *format, ...)
 {
+int i; /*handling string function*/
+char *s; /*hadling string function*/
 int pos; /*position in format string*/
 va_list ap; /*enables taking input from the ...*/
 va_start(ap, format); 
@@ -44,6 +47,22 @@ va_start(ap, format);
 			/*checks if value after % is s (it's a string) */
 			else if (format[pos] == 's')
 			{
+			  
+	
+
+			    s = va_arg(ap, char *);
+			    if (s == NULL)
+			      {
+				s = "(null)";
+			      }
+			    i = 0;
+			    while (s[i])
+			      {
+				_putchar(s[i]);
+				i++;
+			     
+			    
+			  }
                         }
 			/*checks if value after % is % (just print %) */
 			else if (format[pos] == '%')
