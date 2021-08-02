@@ -1,6 +1,7 @@
 #include "holberton.h"
 int main()
 {
+  int n; 
 /*test case: 
  * prints "testing" 
  * %s is a false specifier right now so it doesn't print and skips over 
@@ -11,5 +12,7 @@ int main()
  * Feel free to change this test to suit your needs. 
  * -Isaac
  * */
-  _printf("testing%s123%c%i\n", "hello", 'a', 10 + -3);
+n =  _printf("testing%s123%c\n", "hello", 'a');
+ _printf("%i", n);
 }
+
