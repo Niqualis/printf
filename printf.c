@@ -21,7 +21,7 @@
  * 	what if format is blank
  * 	what if garbage value from ...
  * 	mismatch between format and passed value (%c and 3 or %i and "hey")
- *
+ *	string pointer == NULL
  * To run with testMain: gcc testMain.c printf.c _putchar.c -o printfTest 
  */
 int _printf(const char *format, ...)
