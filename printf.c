@@ -27,7 +27,8 @@
  */
 int _printf(const char *format, ...)
 {
-int i; /*handling string function*/
+int i; /*handling string function and int function*/
+int j;/*handling int function*/
 char *s; /*hadling string function*/
 int pos; /*position in format string*/
 va_list ap; /*enables taking input from the ...*/
@@ -47,9 +48,6 @@ va_start(ap, format);
 			/*checks if value after % is s (it's a string) */
 			else if (format[pos] == 's')
 			{
-			  
-	
-
 			    s = va_arg(ap, char *);
 			    if (s == NULL)
 			      {
@@ -59,9 +57,7 @@ va_start(ap, format);
 			    while (s[i])
 			      {
 				_putchar(s[i]);
-				i++;
-			     
-			    
+				i++;    
 			  }
                         }
 			/*checks if value after % is % (just print %) */
@@ -69,6 +65,17 @@ va_start(ap, format);
 			{
                         _putchar('%');
 			}
+			/*checks if value after % is i (int) */
+                        else if (format[pos] == 'i')
+                        {
+                        i = va_arg(ap, int);
+			j = findDepth(i);
+			printDepth(i, j);
+			}
+			/*checks if value after % is d (double) */
+                        else if (format[pos] == 'd')
+                        {
+                        }
 			/*there's a percent at the very end of format string */
 			else if (format[pos] == '\0')
 			{
@@ -86,4 +93,38 @@ va_start(ap, format);
 		}
 	}
 va_end(ap);
+}
+
+int findDepth(int number)
+{
+	int depth = 1;
+	while(number / 10 != 0)
+	{
+		depth++;
+		number = number/10;
+	}
+	return depth;
+}
+
+void printDepth(int number, int depth)
+{
+int localNumber = number;
+int localDepth = depth;
+int copy = number;
+int depthCopy = depth;
+
+if(localNumber < 0)
+{
+_putchar('-');
+localNumber = localNumber * -1;
+}
+
+for (;localDepth > 0; localDepth--)
+{
+for (copy = localNumber, depthCopy = localDepth; depthCopy > 1; depthCopy--)
+{
+copy = copy / 10;
+}
+_putchar(copy % 10 + '0');
+}
 }

@@ -11,5 +11,5 @@ int main()
  * Feel free to change this test to suit your needs. 
  * -Isaac
  * */
-  _printf("testing%s123%c\n", "hello", 'a');
+  _printf("testing%s123%c%i\n", "hello", 'a', 10 + -3);
 }
