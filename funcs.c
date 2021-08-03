@@ -27,7 +27,7 @@ char *s = (va_arg(ap, char *));
 int i, count = 0;
 if (s == NULL)
 {
-return (-1);
+s = "(null)";
 }
 for (i = 0; s[i]; i++)
 {
