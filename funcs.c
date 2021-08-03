@@ -42,8 +42,10 @@ return (count);
  * Return: the number of characters printed
  */
 
-int print_percent(void)
+int print_percent(va_list ap)
 {
+va_list p;
+va_copy(p, ap);
 _putchar('%');
 return (1);
 }
