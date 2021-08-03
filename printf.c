@@ -22,7 +22,7 @@
  */
 int _printf(const char *format, ...)
 {
-int j, i, pos, count = 0; /*handling string function and int function*/
+int i, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
 which_t w[] = {
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
@@ -42,11 +42,7 @@ for (i = 0; w[i].letter != 0; i++)
 {
 if (w[i].letter == format[pos])
 {
-j = (w[i].f)(ap);
-if (j == -1)
-return (-1);
-else
-count += j;
+count += (w[i].f)(ap);
 break;
 }
 if (w[i].letter == 0)
