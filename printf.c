@@ -29,7 +29,7 @@ which_t w[] = {
 	{'i', print_int}, {'d', print_int}, {0, NULL}
 };
 va_start(ap, format);
-if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+if (format == NULL) 
 return (-1);
 for (pos = 0; format[pos] != '\0'; pos++) /*loop through format, print chars*/
 {
