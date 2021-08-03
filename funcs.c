@@ -38,6 +38,7 @@ return (count);
 
 /**
  * print_percent - prints a percent
+ * @ap: va_list
  *
  * Return: the number of characters printed
  */
