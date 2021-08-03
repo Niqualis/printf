@@ -10,64 +10,56 @@
 
 /*
  * TODO:
- * use case statement instead of if/else if
- * cut big function into smaller functions
- * implement handling for chars
- * implement handling for strings
- * implement handling for percents | DONE
- * implement handling for ints
- * implement handling for doubles
- * implement handling for unknown (%j or %q or something)
- * fringe cases
- * ________what if just "%"
- * ________what if format is blank
- * ________what if garbage value from ...
- * ________mismatch between format and passed value (%c and 3 or %i and "hey")
- * ________string pointer == NULL
  * To run with testMain: gcc testMain.c printf.c -o printfTest
- * printNumbers +1 when printing a negative int
+ * testing: gcc printf.c _putchar.c holberton.h testMain.c -o mainTest
+ *
+ * just %
+ * percent at end
+ * garbage value from ...
+ * mismatch between format and value
+ *
+ *
  */
 int _printf(const char *format, ...)
 {
-int i, j, pos, printNumber = 0; /*handling string function and int function*/
-char *s; /* hadling string function */
+int j, i, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
+which_t w[] = {
+	{'c', print_char}, {'s', print_string}, {'%', print_percent},
+	{'i', print_int}, {'d', print_int}, {0, NULL}
+};
 va_start(ap, format);
+if (format == NULL)
+return (-1);
 for (pos = 0; format[pos] != '\0'; pos++) /*loop through format, print chars*/
 {
 if (format[pos] == '%')/*checks for % in format string*/
 {
 pos++;
-switch (format[pos])
+if (format[pos] == '\0')
+return (-1);
+for (i = 0; w[i].letter != 0; i++)
 {
-	case 'c':/*checks if value after % is c (it's a char) */
-printNumber = _putchar(va_arg(ap, int), printNumber);
-break;
-	case 's':/*checks if value after % is s (it's a string) */
-s = va_arg(ap, char *);
-printString(s);
-printNumber++;
-break;
-	case '%':/*checks if value after % is % (just print %) */
-printNumber = _putchar('%', printNumber);
-break;
-	case 'i':/*checks if value after % is i (int) */
-	case 'd':
-i = va_arg(ap, int);
-j = findDepth(i);
-printDepth(i, j);
-break;
-	case 0:/*there's a percent sign and not a recognized value after*/
+if (w[i].letter == format[pos])
+{
+j = (w[i].f)(ap);
+if (j == -1)
+return (-1);
+else
+count += j;
 break;
 }
+if (w[i].letter == 0)
+return (-1);
 }
-else/*if current char in format string is not % */
+}
+else
 {
-printNumber = _putchar(format[pos], printNumber); /*print it like normal*/
+count += _putchar(format[pos]);
 }
 }
 va_end(ap);
-return (printNumber);
+return (count);
 }
 
 /**
@@ -95,46 +87,25 @@ return (depth);
  *
  * Return: void
  */
-void printDepth(int number, int depth)
+int printDepth(int number, int depth)
 {
+int count = 0;
 int localNumber = number;
 int localDepth = depth;
 int copy = number;
 int depthCopy = depth;
-
 if (localNumber < 0)
 {
-_putchar('-', 0);
+count += _putchar('-');
 localNumber = localNumber * -1;
 }
-
 for (; localDepth > 0; localDepth--)
 {
 for (copy = localNumber, depthCopy = localDepth; depthCopy > 1; depthCopy--)
 {
 copy = copy / 10;
 }
-_putchar(copy % 10 + '0', 0);
+count += _putchar(copy % 10 + '0');
 }
-}
-
-/**
- * printString - prints passed input
- * @s: string to be printed
- *
- * Return: void
- */
-
-void printString(char *s)
-{
-int i = 0;
-if (s == NULL)
-{
-s = "(null)";
-}
-while (s[i])
-{
-_putchar(s[i], 0);
-i++;
-}
+return (count);
 }
