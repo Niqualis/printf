@@ -2,10 +2,24 @@
 #include "holberton.h"
 #include <stddef.h>
 
+/**
+ * print_char - prints a char
+ * @ap: va_list
+ *
+ * Return: the number of characters printed
+ */
+
 int print_char(va_list ap)
 {
 return (_putchar(va_arg(ap, int)));
 }
+
+/**
+ * print_string - prints a string
+ * @ap: va_list
+ *
+ * Return: the number of characters printed
+ */
 
 int print_string(va_list ap)
 {
@@ -22,11 +36,24 @@ count += _putchar(s[i]);
 return (count);
 }
 
-int print_percent()
+/**
+ * print_percent - prints a percent
+ *
+ * Return: the number of characters printed
+ */
+
+int print_percent(void)
 {
 _putchar('%');
 return (1);
 }
+
+/**
+ * print_int - prints an int
+ * @ap: va_list
+ *
+ * Return: the number of characters printed
+ */
 
 int print_int(va_list ap)
 {
