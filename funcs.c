@@ -60,9 +60,8 @@ return (1);
 
 int print_int(va_list ap)
 {
-int j;
-long int i;
-i = va_arg(ap, long int);
+int i, j;
+i = va_arg(ap, int);
 if (i <= INT_MAX && i >= INT_MIN)
 {
 j = findDepth(i);
