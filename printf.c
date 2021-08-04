@@ -26,7 +26,7 @@ int i, j, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
 which_t w[] = {
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
-	{'i', print_int}, {'d', print_int}, {0, NULL}
+	{'i', print_int}, {'d', print_int}, {'z', NULL}
 };
 va_start(ap, format);
 if (format == NULL)
@@ -49,7 +49,7 @@ else
 count += j;
 break;
 }
-if (w[i].letter == 0)
+if (w[i].letter == 'z')
 return (-1);
 }
 }
