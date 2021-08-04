@@ -60,10 +60,12 @@ return (1);
 
 int print_int(va_list ap)
 {
-int i, j;
-i = va_arg(ap, int);
-if (i <= INT_MAX && i >= INT_MIN)
+int i, j; 
+long int l;
+l = va_arg(ap, long int);
+if (l <= INT_MAX && l >= INT_MIN)
 {
+i = l;
 j = findDepth(i);
 return (printDepth(i, j));
 }
