@@ -22,14 +22,14 @@
  */
 int _printf(const char *format, ...)
 {
-int i, pos, count = 0; /*handling string function and int function*/
+int i, j, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
 which_t w[] = {
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
 	{'i', print_int}, {'d', print_int}, {0, NULL}
 };
 va_start(ap, format);
-if (format == NULL) 
+if (format == NULL)
 return (-1);
 for (pos = 0; format[pos] != '\0'; pos++) /*loop through format, print chars*/
 {
@@ -42,7 +42,11 @@ for (i = 0; w[i].letter != 0; i++)
 {
 if (w[i].letter == format[pos])
 {
-count += (w[i].f)(ap);
+j = (w[i].f)(ap);
+if (j == -1)
+return (-1);
+else
+count += j;
 break;
 }
 if (w[i].letter == 0)

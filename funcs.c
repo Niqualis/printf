@@ -1,7 +1,7 @@
 #include <stdarg.h>
 #include "holberton.h"
 #include <stddef.h>
-
+#include <limits.h>
 /**
  * print_char - prints a char
  * @ap: va_list
@@ -62,6 +62,13 @@ int print_int(va_list ap)
 {
 int i, j;
 i = va_arg(ap, int);
+if (i <= INT_MAX && i >= INT_MIN)
+{
 j = findDepth(i);
 return (printDepth(i, j));
+}
+else
+{
+return (-1);
+}
 }
