@@ -25,7 +25,7 @@ int print_string(va_list ap)
 {
 char *s = (va_arg(ap, char *));
 int i, count = 0;
-if (s == NULL)
+if (s == 0)
 {
 s = "(null)";
 }
