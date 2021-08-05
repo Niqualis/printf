@@ -14,7 +14,7 @@ int i, j, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
 which_t w[] = {
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
-	{'i', print_int}, {'d', print_int}, {0, NULL}
+	{'i', print_int}, {'d', print_int}, {'b', print_binary}, {0, NULL}
 };
 va_start(ap, format);
 if (format == NULL)
@@ -26,7 +26,7 @@ if (format[pos] == '%')/*checks for % in format string*/
 pos++;
 if (format[pos] == '\0')
 return (-1);
-for (i = 0; i < 6; i++)
+for (i = 0; i < 7; i++)
 {
 if (w[i].letter == format[pos])
 {
