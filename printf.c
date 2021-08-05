@@ -8,25 +8,13 @@
  * Return: the number of characters printed
  */
 
-/*
- * TODO:
- * To run with testMain: gcc testMain.c printf.c -o printfTest
- * testing: gcc printf.c _putchar.c holberton.h testMain.c -o mainTest
- *
- * just %
- * percent at end
- * garbage value from ...
- * mismatch between format and value
- *
- *
- */
 int _printf(const char *format, ...)
 {
 int i, j, pos, count = 0; /*handling string function and int function*/
 va_list ap; /* enables taking input from the ... */
 which_t w[] = {
 	{'c', print_char}, {'s', print_string}, {'%', print_percent},
-	{'i', print_int}, {'d', print_int}, {'z', NULL}
+	{'i', print_int}, {'d', print_int}, {0, NULL}
 };
 va_start(ap, format);
 if (format == NULL)
@@ -38,7 +26,7 @@ if (format[pos] == '%')/*checks for % in format string*/
 pos++;
 if (format[pos] == '\0')
 return (-1);
-for (i = 0; w[i].letter != 0; i++)
+for (i = 0; i < 6; i++)
 {
 if (w[i].letter == format[pos])
 {
@@ -49,14 +37,15 @@ else
 count += j;
 break;
 }
-if (w[i].letter == 'z')
-return (-1);
+if (w[i].letter == 0)
+{
+count += _putchar('%');
+count += _putchar(format[pos]);
+}
 }
 }
 else
-{
 count += _putchar(format[pos]);
-}
 }
 va_end(ap);
 return (count);
