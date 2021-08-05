@@ -1,0 +1,67 @@
+./" Manpage for _printf.
+.TH _printf 1 2021-08-03 GNU
+.SH NAME
+Printf \- print formatted
+
+.SH DESCRIPTION
+.B _printf
+prints arguments, stands for \fI"print formatted"
+
+.SH SYNOPSIS
+.B printf
+[\fB\-&\fR]
+[\fB\-b\fR]
+[\fB\-c\fR]
+[\fB\-d\fR]
+[\fB\-ifR]
+[\fB\-o\fR]
+[\fB\-r\fR]
+[\fB\-s\fR]
+[\fB\-S\fR]
+[\fB\-u\fR]
+[\fB\-x\fR]
+[\fB\-X\fR]
+
+.SH OPTIONS
+.TP
+.BR \-%
+prints percent
+.TP
+.BR \-b
+prints in binary
+.TP
+.BR \-c
+prints a character
+.TP
+.BR \-d ", " \-i
+prints an integer
+.TP
+.BR \-o
+prints octal decimal
+.TP
+.BR \-r
+prints string in reverse
+.BR \-s
+prints a string
+.TP
+.BR \-S
+prints string in uppercase
+.TP
+.BR \-u
+prints unsigned integer
+.TP
+.BR \-x
+lowercase hexadecimal
+.TP
+.BR \-X
+lowercase hexadecimal
+.TP
+
+.SH FILES
+.TP
+.I /_putchar.c/funcs.c/holberton.h/main.c/printf.c
+
+.SH AUTHORS
+Isaac Green <https://github.com/IsaacGreenMachine>
+.TP
+Nick Wallace <https://github.com/Niqualis>
