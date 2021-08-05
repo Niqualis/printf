@@ -2,6 +2,7 @@
 #include "holberton.h"
 #include <stddef.h>
 #include <limits.h>
+#include <unistd.h>
 /**
  * print_char - prints a char
  * @ap: va_list
@@ -62,6 +63,10 @@ int print_int(va_list ap)
 {
 int i, j;
 i = va_arg(ap, int);
+if (i == -2147483648)
+{
+return (write(1, "-2147483648", 11));
+}
 if (i <= INT_MAX && i >= INT_MIN)
 {
 j = findDepth(i);
