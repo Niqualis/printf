@@ -3,6 +3,6 @@
 int main()
 {
 int i;
-_printf("%%"); 
+_printf("%b", 1001); 
 return (0);
 }
