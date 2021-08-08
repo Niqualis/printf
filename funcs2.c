@@ -10,7 +10,7 @@ for (length = 0, num = 1; i / num != 0; num = num * 2, length++)
 {
 }
 num = num / 2;
-for(;num != 0; num = num/2)
+for (; num != 0; num = num / 2)
 {
 if (i/num == 1)
 {
