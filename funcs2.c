@@ -1,4 +1,10 @@
 #include "holberton.h"
+/**
+ * print_binary - Prints a number in binary
+ * @ap: va_list
+ * Return: count
+ *
+ */
 int print_binary(va_list ap)
 {
 unsigned int i = va_arg(ap, unsigned int);
@@ -15,9 +21,9 @@ for (; num != 0; num = num / 2)
 if (i / num == 1)
 {
 count += _putchar('1');
-i = i%num;
+i = i % num;
 }
-else    
+else
 count += _putchar('0');
 }
 return (count);
