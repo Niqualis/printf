@@ -34,7 +34,7 @@ j = (w[i].f)(ap);
 if (j == -1)
 return (-1);
 else
-count += j;
+count = count + j;
 break;
 }
 if (w[i].letter == 0)
