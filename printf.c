@@ -40,9 +40,8 @@ break;
 if (w[i].letter == 0)
 {
 _putchar('%');
-count++;
 _putchar(format[pos]);
-count++
+count = count + 2;  
 }
 }
 }
