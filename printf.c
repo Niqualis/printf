@@ -39,7 +39,8 @@ break;
 }
 if (w[i].letter == 0)
 {
-count += _putchar('%');
+_putchar('%');
+count++;
 count += _putchar(format[pos]);
 }
 }
