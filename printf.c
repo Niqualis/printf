@@ -41,7 +41,7 @@ if (w[i].letter == 0)
 {
 _putchar('%');
 _putchar(format[pos]);
-count = count + 2;  
+count = count + 2;
 }
 }
 }
