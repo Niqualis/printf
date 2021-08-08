@@ -6,7 +6,7 @@ int length;/*length of binary number*/
 int num;/*biggest number that can go into int i*/
 int count = 0;
 /*makes num largest divisble number to i and length the length of the decimal*/
-for(length = 0, num = 1; i / num != 0; num = num * 2, length++)
+for (length = 0, num = 1; i / num != 0; num = num * 2, length++)
 {
 }
 num = num/2;
